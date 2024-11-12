@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2024-10-22</span>
+<span id="revdate">2024-11-12</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -594,6 +594,17 @@ pre.rouge .gs {
 <li><a href="#_2024_10_22">4. 2024-10-22</a>
 <ul class="sectlevel2">
 <li><a href="#_docker">4.1. Docker</a></li>
+</ul>
+</li>
+<li><a href="#_2024_11_04">5. 2024-11-04</a></li>
+<li><a href="#_2024_11_11">6. 2024-11-11</a>
+<ul class="sectlevel2">
+<li><a href="#_git_branching_strategy">6.1. Git Branching Strategy</a></li>
+</ul>
+</li>
+<li><a href="#_2024_11_12">7. 2024-11-12</a>
+<ul class="sectlevel2">
+<li><a href="#_aufbau_des_projektrepos">7.1. Aufbau des Projektrepos</a></li>
 </ul>
 </li>
 </ul>
@@ -889,11 +900,191 @@ pre.rouge .gs {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2024_11_04"><a class="anchor" href="#_2024_11_04"></a>5. 2024-11-04</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2024_11_11"><a class="anchor" href="#_2024_11_11"></a>6. 2024-11-11</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_git_branching_strategy"><a class="anchor" href="#_git_branching_strategy"></a>6.1. Git Branching Strategy</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://brntn.me/blog/git-branching-strategy-diagrams/" target="_blank" rel="noopener">Git branching strategy diagrams</a></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Der main-Branch ist immer lauffähig</p>
+</li>
+<li>
+<p>Die Entwicklung der Features findet auf feature Branches statt.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/github-flow.png" alt="github flow">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits^x</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">BEACHTE</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Vor jedem Arbeiten:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>git pull</code></p>
+</li>
+<li>
+<p><code>git merge main</code>  (die Änderungen des main-branches werden in den aktuellen branch )</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Nach jedem Arbeiten</p>
+<div class="ulist">
+<ul>
+<li>
+<p>git commit -m ""</p>
+</li>
+<li>
+<p>git push origin feat/xxx</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Beurteilungkriterien:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Anzahl der Commits (Insights)</p>
+</li>
+<li>
+<p>Anzahl der feature-Branches</p>
+</li>
+<li>
+<p>Qualität der Commit-Messages</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Issue-Nummer</p>
+</li>
+<li>
+<p>Existenz eines Tasks (Issue) zu jedem Commit</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2024_11_12"><a class="anchor" href="#_2024_11_12"></a>7. 2024-11-12</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_aufbau_des_projektrepos"><a class="anchor" href="#_aufbau_des_projektrepos"></a>7.1. Aufbau des Projektrepos</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/aufbau-projektrepo.svg" alt="aufbau projektrepo" width="184" height="95">
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">BEACHTE</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nur ein .git-Verzeichnis im Repo</p>
+</li>
+<li>
+<p>.gitignore im repo-root</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Termin</p>
+<div class="ulist">
+<ul>
+<li>
+<p>19.Nov.2024</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Datenmodell (plantuml-class-diagram)</p>
+</li>
+<li>
+<p>User-Stories (mind. 5)</p>
+</li>
+<li>
+<p>User-Stories und Datenmodell als revealjs-slides (siehe README.adoc)</p>
+</li>
+<li>
+<p>Projekt-Repo einrichten</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2024-10-22 10:25:00 UTC
+Last updated 2024-11-12 23:18:09 UTC
 </div>
 </div>
 </body>
