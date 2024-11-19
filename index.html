@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2024-11-12</span>
+<span id="revdate">2024-11-19</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -605,6 +605,13 @@ pre.rouge .gs {
 <li><a href="#_2024_11_12">7. 2024-11-12</a>
 <ul class="sectlevel2">
 <li><a href="#_aufbau_des_projektrepos">7.1. Aufbau des Projektrepos</a></li>
+</ul>
+</li>
+<li><a href="#_2024_11_19">8. 2024-11-19</a>
+<ul class="sectlevel2">
+<li><a href="#_anforderungserhebung_buch">8.1. Anforderungserhebung (Buch)</a></li>
+<li><a href="#_pflichtenheft_buch">8.2. Pflichtenheft (Buch)</a></li>
+<li><a href="#_docker_wiederholung">8.3. Docker-Wiederholung</a></li>
 </ul>
 </li>
 </ul>
@@ -1080,11 +1087,133 @@ pre.rouge .gs {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2024_11_19"><a class="anchor" href="#_2024_11_19"></a>8. 2024-11-19</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/effektivitaet-effizienz.png" alt="effektivitaet effizienz">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_anforderungserhebung_buch"><a class="anchor" href="#_anforderungserhebung_buch"></a>8.1. Anforderungserhebung (Buch)</h3>
+<div class="sect3">
+<h4 id="_interview"><a class="anchor" href="#_interview"></a>8.1.1. Interview</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_beobachtung"><a class="anchor" href="#_beobachtung"></a>8.1.2. Beobachtung</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_fragebogen"><a class="anchor" href="#_fragebogen"></a>8.1.3. Fragebogen</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_dokumentenanalyse"><a class="anchor" href="#_dokumentenanalyse"></a>8.1.4. Dokumentenanalyse</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pflichtenheft_buch"><a class="anchor" href="#_pflichtenheft_buch"></a>8.2. Pflichtenheft (Buch)</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/v-modell.png" alt="v modell">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Übung: Für Projekte ein Pflichtenheft im asciidoc - Format erstellen</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_wiederholung"><a class="anchor" href="#_docker_wiederholung"></a>8.3. Docker-Wiederholung</h3>
+<div class="sect3">
+<h4 id="_image"><a class="anchor" href="#_image"></a>8.3.1. Image</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_container"><a class="anchor" href="#_container"></a>8.3.2. Container</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_volume"><a class="anchor" href="#_volume"></a>8.3.3. Volume</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Bits and Bytes, die man schreiben und lessen kann (&#8594; File)</p>
+</li>
+<li>
+<p>2 Arten von Volumes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>bind mount</p>
+</li>
+<li>
+<p>volume</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_buildcontext"><a class="anchor" href="#_buildcontext"></a>8.3.4. BuildContext</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Der Docker Build Context ist der Satz von Dateien, die Docker benötigt, um ein Docker-Image zu erstellen. Wenn Sie den Befehl docker build ausführen, übergeben Sie Docker einen Pfad zu einem Verzeichnis als Build Context. Docker sendet dann den Inhalt dieses Verzeichnisses (rekursiv) an den Docker-Daemon.</p>
+</li>
+<li>
+<p>Der Build Context enthält typischerweise die Dockerfile und alle Dateien, die in der Dockerfile referenziert werden, wie z.B. Quellcode, Konfigurationsdateien und Abhängigkeiten.</p>
+<div class="listingblock">
+<div class="title">Beispiel:</div>
+<div class="content">
+<pre>docker build -t my-image:latest .</pre>
+</div>
+</div>
+</li>
+<li>
+<p>In diesem Beispiel ist der aktuelle Verzeichnis (.) der Build Context. Docker wird alle Dateien und Unterverzeichnisse im aktuellen Verzeichnis an den Docker-Daemon senden, um das Image zu erstellen.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mount"><a class="anchor" href="#_mount"></a>8.3.5. mount</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>ein Volume wird gemountet</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registry"><a class="anchor" href="#_registry"></a>8.3.6. Registry</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_dockerfile"><a class="anchor" href="#_dockerfile"></a>8.3.7. Dockerfile</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_port"><a class="anchor" href="#_port"></a>8.3.8. port</h4>
+
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2024-11-12 23:18:09 UTC
+Last updated 2024-11-19 08:52:51 UTC
 </div>
 </div>
 </body>
