@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-01-14</span>
+<span id="revdate">2025-02-25</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -620,7 +620,20 @@ pre.rouge .gs {
 <li><a href="#_package_by_feature">9.1. Package-by-Feature</a></li>
 </ul>
 </li>
-<li><a href="#_2025_01_14">10. 2025-01-14</a></li>
+<li><a href="#_2025_01_14_use_cases">10. 2025-01-14 Use-Cases</a></li>
+<li><a href="#_2025_02_04">11. 2025-02-04</a>
+<ul class="sectlevel2">
+<li><a href="#_entwurfsentscheidungen">11.1. Entwurfsentscheidungen</a></li>
+<li><a href="#_paper_css">11.2. Paper CSS</a></li>
+</ul>
+</li>
+<li><a href="#_2025_02_11">12. 2025-02-11</a></li>
+<li><a href="#_2025_02_25_docker">13. 2025-02-25 Docker</a>
+<ul class="sectlevel2">
+<li><a href="#_nginx_mit_docker">13.1. nginx mit Docker</a></li>
+<li><a href="#_semantische_versionierung_vs_kalendarische_versionierung">13.2. Semantische Versionierung vs Kalendarische Versionierung</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1241,7 +1254,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2025_01_14"><a class="anchor" href="#_2025_01_14"></a>10. 2025-01-14</h2>
+<h2 id="_2025_01_14_use_cases"><a class="anchor" href="#_2025_01_14_use_cases"></a>10. 2025-01-14 Use-Cases</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1255,11 +1268,192 @@ pre.rouge .gs {
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_02_04"><a class="anchor" href="#_2025_02_04"></a>11. 2025-02-04</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://dev.to/ladoxer/why-i-stopped-using-plain-git-pull-and-why-you-should-too-2anl?utm_medium=erik.in&amp;utm_source=bluesky" target="_blank" rel="noopener">Why I Stopped Using Plain Git Pull (And Why You Should Too)</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_entwurfsentscheidungen"><a class="anchor" href="#_entwurfsentscheidungen"></a>11.1. Entwurfsentscheidungen</h3>
+<div class="sect3">
+<h4 id="_schritt_1_erarbeiten_des_zielsystems"><a class="anchor" href="#_schritt_1_erarbeiten_des_zielsystems"></a>11.1.1. Schritt 1: Erarbeiten des Zielsystems</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Was ist mir wichtig?</p>
+</li>
+<li>
+<p>Bsp: Auswahl einer Datenbank für Ermittlung eines Produkts zu einem gewissen EAN-Code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>kostenfrei</p>
+</li>
+<li>
+<p>Zugriff über API möglich</p>
+</li>
+<li>
+<p>keine Zugriffsbeschränkungen (möglichst viele Anfragen pro Tag)</p>
+</li>
+<li>
+<p>möglichst viele Produkte sollen enthalten sein</p>
+</li>
+<li>
+<p>ev. Eintragen eigener (neuer) Produkte</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"><a class="anchor" href="#_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"></a>11.1.2. Schritt 2: Recherche für möglich Optionen (in unserm Bsp Datenbanken)</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://opengtindb.org/" class="bare">https://opengtindb.org/</a></p>
+</li>
+<li>
+<p><a href="https://www.ean-search.org/ean-database-api.html" class="bare">https://www.ean-search.org/ean-database-api.html</a></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_schritt_3_bewertung_der_optionen"><a class="anchor" href="#_schritt_3_bewertung_der_optionen"></a>11.1.3. Schritt 3: Bewertung der Optionen</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternativen</th>
+<th class="tableblock halign-left valign-top">ist kostenfrei</th>
+<th class="tableblock halign-left valign-top">Zugriff über API</th>
+<th class="tableblock halign-left valign-top">viele Produkte verfügbar</th>
+<th class="tableblock halign-left valign-top">Entscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opengtindb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ja</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ja</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hoffentlich</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ean-search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nein</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ja</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">k.A.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paper_css"><a class="anchor" href="#_paper_css"></a>11.2. Paper CSS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.getpapercss.com/" class="bare">https://www.getpapercss.com/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2025_02_11"><a class="anchor" href="#_2025_02_11"></a>12. 2025-02-11</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/disjunkt-ueberlappend.png" alt="disjunkt ueberlappend">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2025_02_25_docker"><a class="anchor" href="#_2025_02_25_docker"></a>13. 2025-02-25 Docker</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_nginx_mit_docker"><a class="anchor" href="#_nginx_mit_docker"></a>13.1. nginx mit Docker</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Aufgabenstellung: ein nginx-Image mittels Docker starten.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wenn <a href="http://localhost:8080" class="bare">http://localhost:8080</a> dann "Hallo &lt;Vorname&gt; &lt;Nachname&gt;"</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker image ls
+
+docker pull nginx
+
+docker run --name nginx \
+           -v $PWD/www-data:/usr/share/nginx/html:ro \
+           -p 8080:80 \
+           -d nginx:1.27-alpine
+
+docker container stop nginx &amp;&amp; docker container rm nginx</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantische_versionierung_vs_kalendarische_versionierung"><a class="anchor" href="#_semantische_versionierung_vs_kalendarische_versionierung"></a>13.2. Semantische Versionierung vs Kalendarische Versionierung</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://semver.org/" class="bare">https://semver.org/</a></p>
+</li>
+<li>
+<p><a href="https://nehckl0.medium.com/semver-and-calver-2-popular-software-versioning-schemes-96be80efe36" class="bare">https://nehckl0.medium.com/semver-and-calver-2-popular-software-versioning-schemes-96be80efe36</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-01-14 08:07:54 UTC
+Last updated 2025-02-25 08:33:49 UTC
 </div>
 </div>
 </body>
