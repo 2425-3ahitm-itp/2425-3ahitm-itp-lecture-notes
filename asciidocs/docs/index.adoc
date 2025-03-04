@@ -13,21 +13,21 @@ icon:github-square[link=https://github.com/2425-3ahitm-itp/2425-3ahitm-itp-lectu
 icon:home[link=http://edufs.edu.htl-leonding.ac.at/~t.stuetz/hugo/2021/01/lecture-notes/]
 endif::backend-html5[]
 
-== Mitschriften
+== Mitschriften [Simone]
 
 
-link:notes/ITP_08-10-2024.pdf[Mitschrift vom 08.10.2024 (Simone Sperrer)]
+link:notes/ITP_08-10-2024.pdf[Mitschrift vom 08.10.2024 (Simone)]
 
-link:notes/ITP_21-10-2024.pdf[Mitschrift vom 21.10.2024 (Simone Sperrer)]
+link:notes/ITP_21-10-2024.pdf[Mitschrift vom 21.10.2024 (Simone)]
 
-link:notes/ITP_22-10-2024.pdf[Mitschrift vom 22.10.2024 (Simone Sperrer)]
+link:notes/ITP_22-10-2024.pdf[Mitschrift vom 22.10.2024 (Simone)]
 
 
 
 
 == 2024-10-01
 
-* Mehic: IoT/HA - Alarmierung für ältere PErsonen
+* Hanan: IoT/HA - Alarmierung für ältere PErsonen
 * Zangenfeind: Koordination für Müllsammeln
 
 
@@ -256,7 +256,7 @@ image::github-flow.png[]
 
 
 
-== 2024-11-19
+== 2024-11-19 [Hanan]
 
 image::effektivitaet-effizienz.png[]
 
@@ -383,8 +383,9 @@ docker build -t my-image:latest .
 .source: https://medium.com/sahibinden-technology/package-by-layer-vs-package-by-feature-7e89cde2ae3a[^]
 image::package-by-feature.png[]
 
-== 2024-12-17
+== 2024-12-17 [Hanan]
 === Beziehungen - Assoziation
+
 
 * Die Assoziation zwischen einem Akteur und einem Anwendungsfall wird durch eine einfache Linie dargestellt. Diese Linie symbolisiert die Interaktion, jedoch keine Datenflussrichtung.
 * Beispiel:
@@ -490,12 +491,26 @@ docker image ls
 
 docker pull nginx
 
+# mit Bind Mount
 docker run --name nginx \
-           -v $PWD/www-data:/usr/share/nginx/html:ro \
+           --rm \
+           -v $PWD/www-data:/usr/share/nginx/html \
            -p 8080:80 \
            -d nginx:1.27-alpine
 
 docker container stop nginx && docker container rm nginx
+
+# Mit Docker Volume
+docker run --name nginx \
+           --rm \
+           -v www-data:/usr/share/nginx/html \
+           -p 8080:80 \
+           -d nginx:1.27-alpine
+
+docker exec -it nginx /bin/ash
+
+docker cp www-data/index.html nginx:/usr/share/nginx/html
+
 ----
 
 IMPORTANT: Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
