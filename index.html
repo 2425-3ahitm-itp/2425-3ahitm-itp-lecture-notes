@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-02-25</span>
+<span id="revdate">2025-03-04</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -602,36 +602,56 @@ pre.rouge .gs {
 <li><a href="#_git_branching_strategy">6.1. Git Branching Strategy</a></li>
 </ul>
 </li>
-<li><a href="#_2024_11_12">7. 2024-11-12</a>
+<li><a href="#_git_branching_strategy_2">7. Git branching strategy</a>
 <ul class="sectlevel2">
-<li><a href="#_aufbau_des_projektrepos">7.1. Aufbau des Projektrepos</a></li>
+<li><a href="#_was_ist_ein_git_branch">7.1. Was ist ein git branch?</a></li>
 </ul>
 </li>
-<li><a href="#_2024_11_19">8. 2024-11-19</a>
+<li><a href="#_2024_11_12">8. 2024-11-12</a>
 <ul class="sectlevel2">
-<li><a href="#_anforderungserhebung_buch">8.1. Anforderungserhebung (Buch)</a></li>
-<li><a href="#_pflichtenheft_buch">8.2. Pflichtenheft (Buch)</a></li>
-<li><a href="#_docker_wiederholung">8.3. Docker-Wiederholung</a></li>
-<li><a href="#_docker_compose">8.4. docker compose</a></li>
+<li><a href="#_aufbau_des_projektrepos">8.1. Aufbau des Projektrepos</a></li>
 </ul>
 </li>
-<li><a href="#_2024_12_04">9. 2024-12-04</a>
+<li><a href="#_2024_11_19">9. 2024-11-19</a>
 <ul class="sectlevel2">
-<li><a href="#_package_by_feature">9.1. Package-by-Feature</a></li>
+<li><a href="#_anforderungserhebung_buch">9.1. Anforderungserhebung (Buch)</a></li>
+<li><a href="#_pflichtenheft_buch">9.2. Pflichtenheft (Buch)</a></li>
+<li><a href="#_docker_grundlagen">9.3. Docker-Grundlagen</a></li>
+<li><a href="#_was_ist_docker">9.4. <strong>Was ist Docker?</strong></a></li>
+<li><a href="#_wie_funktioniert_docker">9.5. <strong>Wie funktioniert Docker?</strong></a></li>
+<li><a href="#_leichtgewichtige_virtualisierung_vs_schwergewichtige_virtualisierung">9.6. Leichtgewichtige Virtualisierung VS Schwergewichtige Virtualisierung</a></li>
+<li><a href="#_docker_registries">9.7. Docker Registries</a></li>
+<li><a href="#_docker_image">9.8. Docker Image</a></li>
+<li><a href="#_docker_container">9.9. Docker Container</a></li>
+<li><a href="#_docker_wiederholung">9.10. Docker-Wiederholung</a></li>
+<li><a href="#_docker_compose">9.11. docker compose</a></li>
 </ul>
 </li>
-<li><a href="#_2025_01_14_use_cases">10. 2025-01-14 Use-Cases</a></li>
-<li><a href="#_2025_02_04">11. 2025-02-04</a>
+<li><a href="#_2024_12_04">10. 2024-12-04</a>
 <ul class="sectlevel2">
-<li><a href="#_entwurfsentscheidungen">11.1. Entwurfsentscheidungen</a></li>
-<li><a href="#_paper_css">11.2. Paper CSS</a></li>
+<li><a href="#_package_by_feature">10.1. Package-by-Feature</a></li>
 </ul>
 </li>
-<li><a href="#_2025_02_11">12. 2025-02-11</a></li>
-<li><a href="#_2025_02_25_docker">13. 2025-02-25 Docker</a>
+<li><a href="#_2024_12_17">11. 2024-12-17</a>
 <ul class="sectlevel2">
-<li><a href="#_nginx_mit_docker">13.1. nginx mit Docker</a></li>
-<li><a href="#_semantische_versionierung_vs_kalendarische_versionierung">13.2. Semantische Versionierung vs Kalendarische Versionierung</a></li>
+<li><a href="#_beziehungen_assoziation">11.1. Beziehungen - Assoziation</a></li>
+<li><a href="#_use_case">11.2. Use case</a></li>
+<li><a href="#_includes_vs_extends">11.3. includes vs extends</a></li>
+<li><a href="#_zustandsmaschine">11.4. Zustandsmaschine</a></li>
+</ul>
+</li>
+<li><a href="#_2025_01_14_use_cases">12. 2025-01-14 Use-Cases</a></li>
+<li><a href="#_2025_02_04">13. 2025-02-04</a>
+<ul class="sectlevel2">
+<li><a href="#_entwurfsentscheidungen">13.1. Entwurfsentscheidungen</a></li>
+<li><a href="#_paper_css">13.2. Paper CSS</a></li>
+</ul>
+</li>
+<li><a href="#_2025_02_11">14. 2025-02-11</a></li>
+<li><a href="#_2025_02_25_docker">15. 2025-02-25 Docker</a>
+<ul class="sectlevel2">
+<li><a href="#_nginx_mit_docker">15.1. nginx mit Docker</a></li>
+<li><a href="#_semantische_versionierung_vs_kalendarische_versionierung">15.2. Semantische Versionierung vs Kalendarische Versionierung</a></li>
 </ul>
 </li>
 </ul>
@@ -938,8 +958,20 @@ pre.rouge .gs {
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_git_branching_strategy"><a class="anchor" href="#_git_branching_strategy"></a>6.1. Git Branching Strategy</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git_branching_strategy_2"><a class="anchor" href="#_git_branching_strategy_2"></a>7. Git branching strategy</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_was_ist_ein_git_branch"><a class="anchor" href="#_was_ist_ein_git_branch"></a>7.1. Was ist ein git branch?</h3>
 <div class="ulist">
 <ul>
+<li>
+<p>Ein Git-Branch ist eine unabhängige Version eines Repositories, die es ermöglicht, an neuen Features oder Fixes zu arbeiten, ohne den Hauptcode (meistens im <code>master</code>- oder <code>main</code>-Branch) zu stören. Nach Abschluss der Arbeiten kann der Branch zurück in den Hauptbranch gemergt werden, um die Änderungen zu integrieren.</p>
+</li>
 <li>
 <p><a href="https://brntn.me/blog/git-branching-strategy-diagrams/" target="_blank" rel="noopener">Git branching strategy diagrams</a></p>
 </li>
@@ -1043,10 +1075,10 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2024_11_12"><a class="anchor" href="#_2024_11_12"></a>7. 2024-11-12</h2>
+<h2 id="_2024_11_12"><a class="anchor" href="#_2024_11_12"></a>8. 2024-11-12</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_aufbau_des_projektrepos"><a class="anchor" href="#_aufbau_des_projektrepos"></a>7.1. Aufbau des Projektrepos</h3>
+<h3 id="_aufbau_des_projektrepos"><a class="anchor" href="#_aufbau_des_projektrepos"></a>8.1. Aufbau des Projektrepos</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/aufbau-projektrepo.svg" alt="aufbau projektrepo" width="184" height="95">
@@ -1108,7 +1140,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2024_11_19"><a class="anchor" href="#_2024_11_19"></a>8. 2024-11-19</h2>
+<h2 id="_2024_11_19"><a class="anchor" href="#_2024_11_19"></a>9. 2024-11-19</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -1116,26 +1148,26 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anforderungserhebung_buch"><a class="anchor" href="#_anforderungserhebung_buch"></a>8.1. Anforderungserhebung (Buch)</h3>
+<h3 id="_anforderungserhebung_buch"><a class="anchor" href="#_anforderungserhebung_buch"></a>9.1. Anforderungserhebung (Buch)</h3>
 <div class="sect3">
-<h4 id="_interview"><a class="anchor" href="#_interview"></a>8.1.1. Interview</h4>
+<h4 id="_interview"><a class="anchor" href="#_interview"></a>9.1.1. Interview</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_beobachtung"><a class="anchor" href="#_beobachtung"></a>8.1.2. Beobachtung</h4>
+<h4 id="_beobachtung"><a class="anchor" href="#_beobachtung"></a>9.1.2. Beobachtung</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_fragebogen"><a class="anchor" href="#_fragebogen"></a>8.1.3. Fragebogen</h4>
+<h4 id="_fragebogen"><a class="anchor" href="#_fragebogen"></a>9.1.3. Fragebogen</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_dokumentenanalyse"><a class="anchor" href="#_dokumentenanalyse"></a>8.1.4. Dokumentenanalyse</h4>
+<h4 id="_dokumentenanalyse"><a class="anchor" href="#_dokumentenanalyse"></a>9.1.4. Dokumentenanalyse</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pflichtenheft_buch"><a class="anchor" href="#_pflichtenheft_buch"></a>8.2. Pflichtenheft (Buch)</h3>
+<h3 id="_pflichtenheft_buch"><a class="anchor" href="#_pflichtenheft_buch"></a>9.2. Pflichtenheft (Buch)</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/v-modell.png" alt="v modell">
@@ -1150,17 +1182,152 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docker_wiederholung"><a class="anchor" href="#_docker_wiederholung"></a>8.3. Docker-Wiederholung</h3>
+<h3 id="_docker_grundlagen"><a class="anchor" href="#_docker_grundlagen"></a>9.3. Docker-Grundlagen</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_was_ist_docker"><a class="anchor" href="#_was_ist_docker"></a>9.4. <strong>Was ist Docker?</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Eine Technologie , um eine Application und alle ihre Abhängigkeiten in einen einzelnen , leicht zu transportierenden Container zu packen.</p>
+</li>
+<li>
+<p>Wird eine Applikation in einem Docker-Container gepackt, so ist sichergestellt , dass die Laufzeitumgebung unverändert bleibt, auch wenn der Container auf einem anderen Hostsystem läuft.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wie_funktioniert_docker"><a class="anchor" href="#_wie_funktioniert_docker"></a>9.5. <strong>Wie funktioniert Docker?</strong></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2024-12-14-00-53-54-579.png" alt="image 2024 12 14 00 53 54 579">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Dockerfile</strong>: Dies ist eine Textdatei, die Anweisungen enthält , um ein Docker-Image zu erstellen.(Kochrezept zum Erstellen des Images).</p>
+</li>
+<li>
+<p><strong>docker build</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mit diesem Befehl wird aus dem Dockerfile ein Docker-Image erstellt. Dieses Image hat alle notwendigen Datien und Abhängigkeiten , um eine Anwendung auszuführen.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker build</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Docker Registry</strong>: Bibliothek oder Lager , wo Docker-Images gespeichert und verwaltet werden.</p>
+</li>
+<li>
+<p><strong>docker pull</strong>: Man holt sich mit diesem Befehl ein Docker-Image aus der Docker-Registry.(herunterladen oder pullen)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="terminal"><span class="go">docker pull</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>docker run</strong>: Mit docker run wird aus dem Docker Image ein Docker Container gestartet.
+Ein Docker Container ist die laufende Instanz eines Docker Images.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="terminal"><span class="go">docker run</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_leichtgewichtige_virtualisierung_vs_schwergewichtige_virtualisierung"><a class="anchor" href="#_leichtgewichtige_virtualisierung_vs_schwergewichtige_virtualisierung"></a>9.6. Leichtgewichtige Virtualisierung VS Schwergewichtige Virtualisierung</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Leichtgewichtige Virtualisierung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schwergewichtige Virtualisierung</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die beiden OS sind nicht unabhängig und müssen den selben Kernel benutzen.
+z.b Linux/Linux, verlangt aber weniger Ressourcenutzung.</p>
+<p class="tableblock">Beispiele: Docker,Podman</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die beiden OS sind völlig unabhängig und können verschieden sein.</p>
+<p class="tableblock">Beispiele: Virtual Box, vmWare</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="images/image-2024-12-14-01-03-56-506.png" alt="image 2024 12 14 01 03 56 506">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_registries"><a class="anchor" href="#_docker_registries"></a>9.7. Docker Registries</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>ist ein Remote-Repository zum Abspeichern von Docker Images</p>
+</li>
+<li>
+<p>kann privat und öffentlich(public) sein</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_image"><a class="anchor" href="#_docker_image"></a>9.8. Docker Image</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Docker Image enthält alle notwendigen Dateien, Einstellungen und Abhängigkeiten , um eine Anwendung auszuführen.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_container"><a class="anchor" href="#_docker_container"></a>9.9. Docker Container</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Docker Container ist die laufende Instanz von einem Docker Image und wird mit docker run erstellt</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_wiederholung"><a class="anchor" href="#_docker_wiederholung"></a>9.10. Docker-Wiederholung</h3>
 <div class="sect3">
-<h4 id="_image"><a class="anchor" href="#_image"></a>8.3.1. Image</h4>
+<h4 id="_image"><a class="anchor" href="#_image"></a>9.10.1. Image</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_container"><a class="anchor" href="#_container"></a>8.3.2. Container</h4>
+<h4 id="_container"><a class="anchor" href="#_container"></a>9.10.2. Container</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_volume"><a class="anchor" href="#_volume"></a>8.3.3. Volume</h4>
+<h4 id="_volume"><a class="anchor" href="#_volume"></a>9.10.3. Volume</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1183,7 +1350,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_buildcontext"><a class="anchor" href="#_buildcontext"></a>8.3.4. BuildContext</h4>
+<h4 id="_buildcontext"><a class="anchor" href="#_buildcontext"></a>9.10.4. BuildContext</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1205,7 +1372,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mount"><a class="anchor" href="#_mount"></a>8.3.5. mount</h4>
+<h4 id="_mount"><a class="anchor" href="#_mount"></a>9.10.5. mount</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1215,20 +1382,20 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_registry"><a class="anchor" href="#_registry"></a>8.3.6. Registry</h4>
+<h4 id="_registry"><a class="anchor" href="#_registry"></a>9.10.6. Registry</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_dockerfile"><a class="anchor" href="#_dockerfile"></a>8.3.7. Dockerfile</h4>
+<h4 id="_dockerfile"><a class="anchor" href="#_dockerfile"></a>9.10.7. Dockerfile</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_port"><a class="anchor" href="#_port"></a>8.3.8. port</h4>
+<h4 id="_port"><a class="anchor" href="#_port"></a>9.10.8. port</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docker_compose"><a class="anchor" href="#_docker_compose"></a>8.4. docker compose</h3>
+<h3 id="_docker_compose"><a class="anchor" href="#_docker_compose"></a>9.11. docker compose</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1240,10 +1407,10 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2024_12_04"><a class="anchor" href="#_2024_12_04"></a>9. 2024-12-04</h2>
+<h2 id="_2024_12_04"><a class="anchor" href="#_2024_12_04"></a>10. 2024-12-04</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_package_by_feature"><a class="anchor" href="#_package_by_feature"></a>9.1. Package-by-Feature</h3>
+<h3 id="_package_by_feature"><a class="anchor" href="#_package_by_feature"></a>10.1. Package-by-Feature</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/package-by-feature.png" alt="package by feature">
@@ -1254,7 +1421,118 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2025_01_14_use_cases"><a class="anchor" href="#_2025_01_14_use_cases"></a>10. 2025-01-14 Use-Cases</h2>
+<h2 id="_2024_12_17"><a class="anchor" href="#_2024_12_17"></a>11. 2024-12-17</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_beziehungen_assoziation"><a class="anchor" href="#_beziehungen_assoziation"></a>11.1. Beziehungen - Assoziation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Die Assoziation zwischen einem Akteur und einem Anwendungsfall wird durch eine einfache Linie dargestellt. Diese Linie symbolisiert die Interaktion, jedoch keine Datenflussrichtung.</p>
+</li>
+<li>
+<p>Beispiel:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Benutzer interagiert mit einem System, z. B. ein Kunde führt eine Bestellung durch.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case"><a class="anchor" href="#_use_case"></a>11.2. Use case</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Beispiel für einen Use Case:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ein Kunde kauft ein Auto.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Grund:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Der Kunde benötigt ein Transportmittel, um Güter von A nach B zu befördern.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_includes_vs_extends"><a class="anchor" href="#_includes_vs_extends"></a>11.3. includes vs extends</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>extends</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wird verwendet, wenn ein Anwendungsfall optional erweitert werden kann. Beispiel: 'Registrierung abschließen' kann optional 'Gutschein anwenden' erweitern.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>include</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wird verwendet, wenn ein Anwendungsfall zwingend einen anderen Anwendungsfall beinhaltet, um korrekt zu funktionieren. Beispiel: 'Zahlung verarbeiten' beinhaltet zwingend 'Rechnungsdetails prüfen'.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zustandsmaschine"><a class="anchor" href="#_zustandsmaschine"></a>11.4. Zustandsmaschine</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Eine Zustandsmaschine zeigt die verschiedenen Zustände eines Objekts und die möglichen Übergänge zwischen diesen Zuständen.</p>
+</li>
+<li>
+<p>Ein Fußballspiel kann mehrere Zustände haben</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In Vorbereitung - Startzustand, z.B. Mannschaften werden aufgestellt.</p>
+</li>
+<li>
+<p>Ablauf - Das Spiel wird gespielt.</p>
+</li>
+<li>
+<p>Abbruch - Das Spiel wird vorzeitig beendet.</p>
+</li>
+<li>
+<p>Pause - Halbzeitpause</p>
+</li>
+<li>
+<p>Abschluss - Endzustand, z.B.Spielende</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2025_01_14_use_cases"><a class="anchor" href="#_2025_01_14_use_cases"></a>12. 2025-01-14 Use-Cases</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1269,7 +1547,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2025_02_04"><a class="anchor" href="#_2025_02_04"></a>11. 2025-02-04</h2>
+<h2 id="_2025_02_04"><a class="anchor" href="#_2025_02_04"></a>13. 2025-02-04</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1279,9 +1557,9 @@ pre.rouge .gs {
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_entwurfsentscheidungen"><a class="anchor" href="#_entwurfsentscheidungen"></a>11.1. Entwurfsentscheidungen</h3>
+<h3 id="_entwurfsentscheidungen"><a class="anchor" href="#_entwurfsentscheidungen"></a>13.1. Entwurfsentscheidungen</h3>
 <div class="sect3">
-<h4 id="_schritt_1_erarbeiten_des_zielsystems"><a class="anchor" href="#_schritt_1_erarbeiten_des_zielsystems"></a>11.1.1. Schritt 1: Erarbeiten des Zielsystems</h4>
+<h4 id="_schritt_1_erarbeiten_des_zielsystems"><a class="anchor" href="#_schritt_1_erarbeiten_des_zielsystems"></a>13.1.1. Schritt 1: Erarbeiten des Zielsystems</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1313,7 +1591,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"><a class="anchor" href="#_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"></a>11.1.2. Schritt 2: Recherche für möglich Optionen (in unserm Bsp Datenbanken)</h4>
+<h4 id="_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"><a class="anchor" href="#_schritt_2_recherche_für_möglich_optionen_in_unserm_bsp_datenbanken"></a>13.1.2. Schritt 2: Recherche für möglich Optionen (in unserm Bsp Datenbanken)</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1329,7 +1607,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_schritt_3_bewertung_der_optionen"><a class="anchor" href="#_schritt_3_bewertung_der_optionen"></a>11.1.3. Schritt 3: Bewertung der Optionen</h4>
+<h4 id="_schritt_3_bewertung_der_optionen"><a class="anchor" href="#_schritt_3_bewertung_der_optionen"></a>13.1.3. Schritt 3: Bewertung der Optionen</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -1367,7 +1645,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paper_css"><a class="anchor" href="#_paper_css"></a>11.2. Paper CSS</h3>
+<h3 id="_paper_css"><a class="anchor" href="#_paper_css"></a>13.2. Paper CSS</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1379,7 +1657,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2025_02_11"><a class="anchor" href="#_2025_02_11"></a>12. 2025-02-11</h2>
+<h2 id="_2025_02_11"><a class="anchor" href="#_2025_02_11"></a>14. 2025-02-11</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -1389,10 +1667,10 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2025_02_25_docker"><a class="anchor" href="#_2025_02_25_docker"></a>13. 2025-02-25 Docker</h2>
+<h2 id="_2025_02_25_docker"><a class="anchor" href="#_2025_02_25_docker"></a>15. 2025-02-25 Docker</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_nginx_mit_docker"><a class="anchor" href="#_nginx_mit_docker"></a>13.1. nginx mit Docker</h3>
+<h3 id="_nginx_mit_docker"><a class="anchor" href="#_nginx_mit_docker"></a>15.1. nginx mit Docker</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1435,7 +1713,7 @@ Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
 </div>
 </div>
 <div class="sect2">
-<h3 id="_semantische_versionierung_vs_kalendarische_versionierung"><a class="anchor" href="#_semantische_versionierung_vs_kalendarische_versionierung"></a>13.2. Semantische Versionierung vs Kalendarische Versionierung</h3>
+<h3 id="_semantische_versionierung_vs_kalendarische_versionierung"><a class="anchor" href="#_semantische_versionierung_vs_kalendarische_versionierung"></a>15.2. Semantische Versionierung vs Kalendarische Versionierung</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1453,7 +1731,7 @@ Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-02-25 08:33:49 UTC
+Last updated 2025-03-04 07:20:40 UTC
 </div>
 </div>
 </body>
