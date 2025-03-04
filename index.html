@@ -655,6 +655,11 @@ pre.rouge .gs {
 <li><a href="#_semantische_versionierung_vs_kalendarische_versionierung">16.2. Semantische Versionierung vs Kalendarische Versionierung</a></li>
 </ul>
 </li>
+<li><a href="#_2025_03_04_dockerfile">17. 2025-03-04 Dockerfile</a>
+<ul class="sectlevel2">
+<li><a href="#_vereinbarung">17.1. Vereinbarung</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1755,11 +1760,79 @@ Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_03_04_dockerfile"><a class="anchor" href="#_2025_03_04_dockerfile"></a>17. 2025-03-04 Dockerfile</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello Chris!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="Dockerfile"><span class="k">FROM</span><span class="s"> eclipse-temurin:21</span>
+
+<span class="k">COPY</span><span class="s"> Main.java /usr/local/src/</span>
+<span class="k">WORKDIR</span><span class="s"> /usr/local/src/</span>
+<span class="k">RUN </span>javac Main.java
+<span class="k">CMD</span><span class="s"> ["java","Main"]</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker build --tag hello-chris .  # Bauen des Images anhand des Dockerfiles
+docker run hello-chris            # Starten des Container mir dem gebauten Image</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vereinbarung"><a class="anchor" href="#_vereinbarung"></a>17.1. Vereinbarung</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Programmieren einer User Story</p>
+</li>
+<li>
+<p>Erstellen eines Dokcer Container</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Erstellen eines Verezichnisses <code>compose</code> im project-root</p>
+</li>
+<li>
+<p>Erstellen eines Dockerfiles für ein beliebiges maven-PRojekt mit Textausgabe</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Verwenden des maven-Images</p>
+</li>
+<li>
+<p><code>mvn package</code></p>
+</li>
+<li>
+<p>Java-Programm - gibt das Datum und die Uhrzeit auf der Console aus und gibt an ob das aktuelle Jahr ein Schaltjahr ist und wann das nächste Schaltjahr ist.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-03-04 07:54:58 UTC
+Last updated 2025-03-04 08:38:22 UTC
 </div>
 </div>
 </body>
