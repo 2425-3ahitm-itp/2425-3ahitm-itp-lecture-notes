@@ -571,7 +571,7 @@ pre.rouge .gs {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_mitschriften">1. Mitschriften</a></li>
+<li><a href="#_mitschriften_simone">1. Mitschriften [Simone]</a></li>
 <li><a href="#_2024_10_01">2. 2024-10-01</a>
 <ul class="sectlevel2">
 <li><a href="#_test_driven_development">2.1. Test Driven development</a></li>
@@ -613,7 +613,7 @@ pre.rouge .gs {
 <li><a href="#_aufbau_des_projektrepos">9.1. Aufbau des Projektrepos</a></li>
 </ul>
 </li>
-<li><a href="#_2024_11_19">10. 2024-11-19</a>
+<li><a href="#_2024_11_19_hanan">10. 2024-11-19 [Hanan]</a>
 <ul class="sectlevel2">
 <li><a href="#_anforderungserhebung_buch">10.1. Anforderungserhebung (Buch)</a></li>
 <li><a href="#_pflichtenheft_buch">10.2. Pflichtenheft (Buch)</a></li>
@@ -633,7 +633,7 @@ pre.rouge .gs {
 <li><a href="#_package_by_feature">11.1. Package-by-Feature</a></li>
 </ul>
 </li>
-<li><a href="#_2024_12_17">12. 2024-12-17</a>
+<li><a href="#_2024_12_17_hanan">12. 2024-12-17 [Hanan]</a>
 <ul class="sectlevel2">
 <li><a href="#_beziehungen_assoziation">12.1. Beziehungen - Assoziation</a></li>
 <li><a href="#_use_case">12.2. Use case</a></li>
@@ -669,16 +669,16 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mitschriften"><a class="anchor" href="#_mitschriften"></a>1. Mitschriften</h2>
+<h2 id="_mitschriften_simone"><a class="anchor" href="#_mitschriften_simone"></a>1. Mitschriften [Simone]</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="notes/ITP_08-10-2024.pdf">Mitschrift vom 08.10.2024 (Simone Sperrer)</a></p>
+<p><a href="notes/ITP_08-10-2024.pdf">Mitschrift vom 08.10.2024 (Simone)</a></p>
 </div>
 <div class="paragraph">
-<p><a href="notes/ITP_21-10-2024.pdf">Mitschrift vom 21.10.2024 (Simone Sperrer)</a></p>
+<p><a href="notes/ITP_21-10-2024.pdf">Mitschrift vom 21.10.2024 (Simone)</a></p>
 </div>
 <div class="paragraph">
-<p><a href="notes/ITP_22-10-2024.pdf">Mitschrift vom 22.10.2024 (Simone Sperrer)</a></p>
+<p><a href="notes/ITP_22-10-2024.pdf">Mitschrift vom 22.10.2024 (Simone)</a></p>
 </div>
 </div>
 </div>
@@ -688,7 +688,7 @@ pre.rouge .gs {
 <div class="ulist">
 <ul>
 <li>
-<p>Mehic: IoT/HA - Alarmierung für ältere PErsonen</p>
+<p>Hanan: IoT/HA - Alarmierung für ältere PErsonen</p>
 </li>
 <li>
 <p>Zangenfeind: Koordination für Müllsammeln</p>
@@ -1155,7 +1155,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2024_11_19"><a class="anchor" href="#_2024_11_19"></a>10. 2024-11-19</h2>
+<h2 id="_2024_11_19_hanan"><a class="anchor" href="#_2024_11_19_hanan"></a>10. 2024-11-19 [Hanan]</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -1436,7 +1436,7 @@ z.b Linux/Linux, verlangt aber weniger Ressourcenutzung.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2024_12_17"><a class="anchor" href="#_2024_12_17"></a>12. 2024-12-17</h2>
+<h2 id="_2024_12_17_hanan"><a class="anchor" href="#_2024_12_17_hanan"></a>12. 2024-12-17 [Hanan]</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_beziehungen_assoziation"><a class="anchor" href="#_beziehungen_assoziation"></a>12.1. Beziehungen - Assoziation</h3>
@@ -1706,12 +1706,25 @@ z.b Linux/Linux, verlangt aber weniger Ressourcenutzung.</p>
 
 docker pull nginx
 
+# mit Bind Mount
 docker run --name nginx \
-           -v $PWD/www-data:/usr/share/nginx/html:ro \
+           --rm \
+           -v $PWD/www-data:/usr/share/nginx/html \
            -p 8080:80 \
            -d nginx:1.27-alpine
 
-docker container stop nginx &amp;&amp; docker container rm nginx</pre>
+docker container stop nginx &amp;&amp; docker container rm nginx
+
+# Mit Docker Volume
+docker run --name nginx \
+           --rm \
+           -v www-data:/usr/share/nginx/html \
+           -p 8080:80 \
+           -d nginx:1.27-alpine
+
+docker exec -it nginx /bin/ash
+
+docker cp www-data/index.html nginx:/usr/share/nginx/html</pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -1746,7 +1759,7 @@ Nur der root user darf Ports unter 1000 verwenden, daher verwenden wir 8080
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-03-04 07:38:29 UTC
+Last updated 2025-03-04 07:54:58 UTC
 </div>
 </div>
 </body>
