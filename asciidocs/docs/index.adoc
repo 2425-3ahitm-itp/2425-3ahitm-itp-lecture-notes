@@ -523,5 +523,43 @@ IMPORTANT: Nur der root user darf Ports unter 1000 verwenden, daher verwenden wi
 * https://nehckl0.medium.com/semver-and-calver-2-popular-software-versioning-schemes-96be80efe36
 
 
+== 2025-03-04 Dockerfile
+
+[source,java]
+----
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Hello Chris!");
+    }
+
+}
+----
+
+[source,Dockerfile]
+----
+FROM eclipse-temurin:21
+
+COPY Main.java /usr/local/src/
+WORKDIR /usr/local/src/
+RUN javac Main.java
+CMD ["java","Main"]
+----
+
+----
+docker build --tag hello-chris .  # Bauen des Images anhand des Dockerfiles
+docker run hello-chris            # Starten des Container mir dem gebauten Image
+----
 
 
+=== Vereinbarung
+
+* Programmieren einer User Story
+
+
+* Erstellen eines Dokcer Container
+** Erstellen eines Verezichnisses `compose` im project-root
+** Erstellen eines Dockerfiles für ein beliebiges maven-PRojekt mit Textausgabe
+*** Verwenden des maven-Images
+*** `mvn package`
+*** Java-Programm - gibt das Datum und die Uhrzeit auf der Console aus und gibt an ob das aktuelle Jahr ein Schaltjahr ist und wann das nächste Schaltjahr ist.
