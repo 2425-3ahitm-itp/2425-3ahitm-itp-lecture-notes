@@ -8,10 +8,22 @@ ifndef::imagesdir[:imagesdir: images]
 :toc:
 ifdef::backend-html5[]
 // https://fontawesome.com/v4.7.0/icons/
-icon:file-text-o[link=https://github.com/2324-4bhif-wmc/2324-4bhif-wmc-lecture-notes/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
-icon:github-square[link=https://github.com/2324-4bhif-wmc/2324-4bhif-wmc-lecture-notes] ‏ ‏ ‎
+icon:file-text-o[link=https://github.com/2425-3ahitm-itp/2425-3ahitm-itp-lecture-notes/blob/main/asciidocs/docs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/2425-3ahitm-itp/2425-3ahitm-itp-lecture-notes] ‏ ‏ ‎
 icon:home[link=http://edufs.edu.htl-leonding.ac.at/~t.stuetz/hugo/2021/01/lecture-notes/]
 endif::backend-html5[]
+
+== Mitschriften
+
+
+link:notes/ITP_08-10-2024.pdf[Mitschrift vom 08.10.2024 (Simone Sperrer)]
+
+link:notes/ITP_21-10-2024.pdf[Mitschrift vom 21.10.2024 (Simone Sperrer)]
+
+link:notes/ITP_22-10-2024.pdf[Mitschrift vom 22.10.2024 (Simone Sperrer)]
+
+
+
 
 == 2024-10-01
 
@@ -129,6 +141,7 @@ image::minimum-viable-product.png[]
 * Sprint Commitment ist unveränderbar
 
 image::scrum-team.png[]
+
 
 == 2024-10-21
 
@@ -493,8 +506,6 @@ IMPORTANT: Nur der root user darf Ports unter 1000 verwenden, daher verwenden wi
 * https://semver.org/
 
 * https://nehckl0.medium.com/semver-and-calver-2-popular-software-versioning-schemes-96be80efe36
-
-
 
 
 
