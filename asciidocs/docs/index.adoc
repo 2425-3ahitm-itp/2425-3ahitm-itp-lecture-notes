@@ -563,3 +563,10 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 *** Verwenden des maven-Images
 *** `mvn package`
 *** Java-Programm - gibt das Datum und die Uhrzeit auf der Console aus und gibt an ob das aktuelle Jahr ein Schaltjahr ist und wann das nächste Schaltjahr ist.
+
+
+== 2025-03-10
+
+* https://www.designsensor.ch/gestaltgesetze/
+
+* https://www.objectbay.com/blog/gestaltgesetze-der-wahrnehmung-nutzen-ux-design
