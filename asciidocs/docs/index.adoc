@@ -637,6 +637,16 @@ Repo->Fork-> Fork wird geändert->gh-request->repo
 ** In einem Projekt mit mehreren Mitgliedern . Jedes Teammitglied darf commiten in den eigenen `Feature- Branch`. Feature Branch oder `Bugfix Branch` oder `develop - Branch`. Für den Merge in den main Branch ist ein Pull Request notwendig/verpflichtend.
 
 
+=== Wireframes
+
+- #Definition# : Ein Wireframe ist ein übergeordneter Entwurf, der die Struktur deiner Website, App oder deines Projekts veranschaulicht.
+
+
+WARNING: Nicht zu technisch denken! Bei Tools wie `Figma` kann man sich leicht in technischen Details verlieren. Dabei sollte der Fokus in dieser Phase eher auf der Idee und Struktur liegen, nicht auf perfektem Design.
+
+
+- Einfache Mittel nutzen:
+** Oft reicht ein Bleistift oder ein simples Programm wie Keycloak, um erste Skizzen zu erstellen. So bleibt man flexibler und kann sich besser auf die Kreativität und Benutzerfreundlichkeit konzentrieren.
 
 
 
