@@ -563,3 +563,90 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 *** Verwenden des maven-Images
 *** `mvn package`
 *** Java-Programm - gibt das Datum und die Uhrzeit auf der Console aus und gibt an ob das aktuelle Jahr ein Schaltjahr ist und wann das nächste Schaltjahr ist.
+
+
+
+== 2025-03-04 [Hanan]
+=== static vs dynamic website
+
+
+- *static*: Eine statische Website bleibt immer gleich, solange man den Code nicht manuell ändert.
+
+** Bsp: Eine Visitenkarten-Website mit festen Infos.
+
+- *dynamic*: Eine dynamische Website passt sich automatisch an, z. B. durch Benutzereingaben oder Datenbankdaten.
+
+** Bsp: Ein Online-Shop, bei dem Produkte aktualisiert werden.
+
+image::staticVsDynamicWS.png[]
+
+=== SPA
+
+- Eine *Single Page Application (SPA)* ist eine Website, die nur eine einzige HTML-Seite lädt und den Inhalt dynamisch aktualisiert, ohne die Seite neu zu laden.
+
+
+image::spa.png[]
+
+=== DOM
+
+- Das *DOM (Document Object Model)* ist die Struktur einer Webseite, die der Browser aus HTML erstellt. Es stellt die Webseite als Baum dar, in dem jedes Element (z. B. Überschriften, Bilder, Buttons) ein Knoten ist.
+
+=== Mulitplizität
+
+- Die Multiplizität gibt an , wie viele Instanzen einer Klasse mit einer anderen Klasse in Beziehung stehen können.
+
+==== Übliche Multiplizitätswerte
+
+
+|===
+|Multiplizität |Bedeutung
+
+|1
+|Genau eine Instanz
+
+|0..1
+|Keine oder eine Instanz
+
+|* oder 0..*
+|Beliebig viele Instanzen
+
+|1..*
+|Mindestens eine , aber beliebig viele Instanzen
+
+|2..5
+|Mindestens 2, maximal 5 Instanzen
+|===
+
+=== Sequenzdiagramm
+
+Sequenzdiagramme beschreiben den Austausch von Nachrichten zwischen Objekten mittels Lebenslinien.
+
+image::sequenzdiagramm.png[]
+
+* Sobald ein Objekt keine Referenz mehr hat, wird es als "unreachable" markiert und kann vom Garbage Collector entfernt werden.
+
+=== Pull request
+- Zweck: In einem git-Repository einen Inhalt einpflegen (commiten), allerdings soll der Commit vorher noch überprüft werden, ob korrekt.
+
+- 1. Szenario:
+** z.B public (open-source git-project). Jemand möchte mitarbeiten. Der Owner des Projekts überprüft jeden Commit, auf Korrektheit.
+
+Repo->Fork-> Fork wird geändert->gh-request->repo
+
+- 2. Szenario
+** In einem Projekt mit mehreren Mitgliedern . Jedes Teammitglied darf commiten in den eigenen `Feature- Branch`. Feature Branch oder `Bugfix Branch` oder `develop - Branch`. Für den Merge in den main Branch ist ein Pull Request notwendig/verpflichtend.
+
+
+=== Wireframes
+
+- #Definition# : Ein Wireframe ist ein übergeordneter Entwurf, der die Struktur deiner Website, App oder deines Projekts veranschaulicht.
+
+
+WARNING: Nicht zu technisch denken! Bei Tools wie `Figma` kann man sich leicht in technischen Details verlieren. Dabei sollte der Fokus in dieser Phase eher auf der Idee und Struktur liegen, nicht auf perfektem Design.
+
+
+- Einfache Mittel nutzen:
+** Oft reicht ein Bleistift oder ein simples Programm wie Keycloak, um erste Skizzen zu erstellen. So bleibt man flexibler und kann sich besser auf die Kreativität und Benutzerfreundlichkeit konzentrieren.
+
+
+
