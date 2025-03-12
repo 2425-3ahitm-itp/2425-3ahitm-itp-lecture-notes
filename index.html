@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-03-10</span>
+<span id="revdate">2025-03-12</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -661,6 +661,12 @@ pre.rouge .gs {
 </ul>
 </li>
 <li><a href="#_2025_03_10">18. 2025-03-10</a></li>
+<li><a href="#_2025_03_11">19. 2025-03-11</a>
+<ul class="sectlevel2">
+<li><a href="#_automatisiertes_testen">19.1. Automatisiertes Testen</a></li>
+<li><a href="#_docker_2">19.2. Docker</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1844,11 +1850,142 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_03_11"><a class="anchor" href="#_2025_03_11"></a>19. 2025-03-11</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_automatisiertes_testen"><a class="anchor" href="#_automatisiertes_testen"></a>19.1. Automatisiertes Testen</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/tests-in-projekten.png" alt="tests in projekten">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Es wird empfohlen, nicht einfach mit dem Coden zu beginnen, sondern sich zuerst auf inhaltlicher Ebene die Geschäftsfälle (User Stories, Anwendungsfälle) zu überlegen und dann auf organisatorisch-technischer Ebene (Vorgehensmodell-Ebene) die dazugehörigen Tasks zu definieren.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tests-ebenen.png" alt="tests ebenen">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/v-modell.png" alt="v modell">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/testplan.png" alt="testplan">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_2"><a class="anchor" href="#_docker_2"></a>19.2. Docker</h3>
+<div class="sect3">
+<h4 id="_lab"><a class="anchor" href="#_lab"></a>19.2.1. Lab</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Das Dockerimage des Nachbarn ausführen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Multistage-Build mit 2 Stages</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Sämtliche Files werden in das Docker-Image kopiert, daher ist es wichtig, dass nur die notwendigen Files im Build-Context sind.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="Dockerfile"><span class="k">FROM</span><span class="w"> </span><span class="s">eclipse-temurin:21</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="k">COPY</span><span class="s"> Main.java /usr/local/src/</span>
+<span class="k">WORKDIR</span><span class="s"> /usr/local/src/</span>
+<span class="k">RUN </span>javac Main.java
+<span class="k">CMD</span><span class="s"> ["java","Main"]</span>
+
+<span class="c"># Build the image</span>
+<span class="k">FROM</span><span class="s"> eclipse-temurin:21</span>
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nt">-p</span> /opt/app
+<span class="k">COPY</span><span class="s"> --from=builder /usr/local/src/*.class /opt/app/</span>
+<span class="k">WORKDIR</span><span class="s"> /opt/app/</span>
+<span class="k">CMD</span><span class="s"> ["java","Main"]</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker build --tag hello-chris .</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Einloggen auf der GitHub Container Registry</div>
+<div class="content">
+<pre>docker login ghcr.io
+docker build --tag ghcr.io/htl-leonding/hello-world-chris:latest .
+docker image ls</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>REPOSITORY                                  TAG           IMAGE ID       CREATED          SIZE
+ghcr.io/htl-leonding/hello-world-chris      latest        bf8419a868f2   14 seconds ago   478MB
+...</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/github-create-token.png" alt="github create token">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker push ghcr.io/htl-leonding/hello-world-chris:latest</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/github-packages.png" alt="github packages">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker run ghcr.io/htl-leonding/hello-world-chris:latest</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>Hello Chris!</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-03-10 13:43:06 UTC
+Last updated 2025-03-12 06:43:16 UTC
 </div>
 </div>
 </body>
