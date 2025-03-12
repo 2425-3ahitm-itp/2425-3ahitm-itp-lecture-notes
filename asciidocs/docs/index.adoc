@@ -570,3 +570,84 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 * https://www.designsensor.ch/gestaltgesetze/
 
 * https://www.objectbay.com/blog/gestaltgesetze-der-wahrnehmung-nutzen-ux-design
+
+
+== 2025-03-11
+
+=== Automatisiertes Testen
+
+image::tests-in-projekten.png[]
+
+* Es wird empfohlen, nicht einfach mit dem Coden zu beginnen, sondern sich zuerst auf inhaltlicher Ebene die Geschäftsfälle (User Stories, Anwendungsfälle) zu überlegen und dann auf organisatorisch-technischer Ebene (Vorgehensmodell-Ebene) die dazugehörigen Tasks zu definieren.
+
+image::tests-ebenen.png[]
+
+image::v-modell.png[]
+
+image::testplan.png[]
+
+
+=== Docker
+
+==== Lab
+
+* Das Dockerimage des Nachbarn ausführen
+
+** Multistage-Build mit 2 Stages
+
+IMPORTANT: Sämtliche Files werden in das Docker-Image kopiert, daher ist es wichtig, dass nur die notwendigen Files im Build-Context sind.
+
+[source,Dockerfile]
+----
+FROM eclipse-temurin:21 AS builder
+
+COPY Main.java /usr/local/src/
+WORKDIR /usr/local/src/
+RUN javac Main.java
+CMD ["java","Main"]
+
+# Build the image
+FROM eclipse-temurin:21
+RUN mkdir -p /opt/app
+COPY --from=builder /usr/local/src/*.class /opt/app/
+WORKDIR /opt/app/
+CMD ["java","Main"]
+----
+
+----
+docker build --tag hello-chris .
+----
+
+.Einloggen auf der GitHub Container Registry
+----
+docker login ghcr.io
+docker build --tag ghcr.io/htl-leonding/hello-world-chris:latest .
+docker image ls
+----
+
+.result
+----
+REPOSITORY                                  TAG           IMAGE ID       CREATED          SIZE
+ghcr.io/htl-leonding/hello-world-chris      latest        bf8419a868f2   14 seconds ago   478MB
+...
+----
+
+image::github-create-token.png[]
+
+
+----
+docker push ghcr.io/htl-leonding/hello-world-chris:latest
+----
+
+
+image::github-packages.png[]
+
+
+----
+docker run ghcr.io/htl-leonding/hello-world-chris:latest
+----
+
+.result
+----
+Hello Chris!
+----
