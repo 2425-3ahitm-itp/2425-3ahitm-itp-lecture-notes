@@ -636,7 +636,7 @@ Repo->Fork-> Fork wird geändert->gh-request->repo
 - 2. Szenario
 ** In einem Projekt mit mehreren Mitgliedern . Jedes Teammitglied darf commiten in den eigenen `Feature- Branch`. Feature Branch oder `Bugfix Branch` oder `develop - Branch`. Für den Merge in den main Branch ist ein Pull Request notwendig/verpflichtend.
 
-
+== 2025-03-10
 === Wireframes
 
 - #Definition# : Ein Wireframe ist ein übergeordneter Entwurf, der die Struktur deiner Website, App oder deines Projekts veranschaulicht.
@@ -649,4 +649,21 @@ WARNING: Nicht zu technisch denken! Bei Tools wie `Figma` kann man sich leicht i
 ** Oft reicht ein Bleistift oder ein simples Programm wie Keycloak, um erste Skizzen zu erstellen. So bleibt man flexibler und kann sich besser auf die Kreativität und Benutzerfreundlichkeit konzentrieren.
 
 
+=== RFID Tags
+RFID-Tags (Radio-Frequency Identification) werden verwendet, um Objekte, Personen oder Tiere drahtlos zu identifizieren und zu verfolgen.
+
+image::rfidTags.png[]
+
+
+== 2025-03-11
+
+- *_Persistenz_* :
+** Persistente Daten bleiben dauerhaft gespeichert und gehen nicht verloren, wenn das Programm oder System beendet wird.
+
+** Beispiel: Speichern von Daten in einer Datenbank (z. B. MySQL, PostgreSQL).
+- *_Transienz_* :
+** Transiente Daten sind nur temporär vorhanden und gehen verloren, wenn das Programm beendet wird.
+** Variablen in einem laufenden Programm.
+
+- *_HTTPS_*: HTTPS (HyperText Transfer Protocol Secure) ist ein sicheres Kommunikationsprotokoll für den Austausch von Daten im Internet. Es ermöglicht Maschinen (z. B. Webserver und Browser), miteinander zu kommunizieren und dabei die Daten zu verschlüsseln.
 
