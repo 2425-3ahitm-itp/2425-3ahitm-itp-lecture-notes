@@ -557,7 +557,7 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 * Programmieren einer User Story
 
 
-* Erstellen eines Dokcer Container
+* Erstellen eines Docker Container
 ** Erstellen eines Verezichnisses `compose` im project-root
 ** Erstellen eines Dockerfiles für ein beliebiges maven-PRojekt mit Textausgabe
 *** Verwenden des maven-Images
@@ -651,3 +651,92 @@ docker run ghcr.io/htl-leonding/hello-world-chris:latest
 ----
 Hello Chris!
 ----
+
+
+== 2025-03-18
+
+
+=== Microservices
+
+* Package by Feature als Vorstufe zu microservices.
+
+* Microservices: Eine Applikation wird fachl,ich in mehrere kleinere (unabhängige) Services aufgeteilt. Eine Koordinationsschicht ermöglicht die Kommunikation zwischen den Services.
+
+
+=== Verteilungsdiagramm (Deployment Diagram)
+
+* Stellt dar, auf welcher Hardware welche Softwarekomponenten laufen.
+
+
+
+=== Docker Compose
+
+* Dient der "Orchestrierung" von mehreren Containern.
+
+* Beispiel: Ein Webserver benötigt eine Datenbank. Mit Docker Compose können beide Container gestartet werden.
+
+* https://docs.docker.com/compose
+
+
+[source,dockerfile]
+----
+
+----
+
+
+[source,dockerfile]
+----
+
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
