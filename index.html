@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-03-12</span>
+<span id="revdate">2025-03-18</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -665,6 +665,13 @@ pre.rouge .gs {
 <ul class="sectlevel2">
 <li><a href="#_automatisiertes_testen">19.1. Automatisiertes Testen</a></li>
 <li><a href="#_docker_2">19.2. Docker</a></li>
+</ul>
+</li>
+<li><a href="#_2025_03_18">20. 2025-03-18</a>
+<ul class="sectlevel2">
+<li><a href="#_microservices">20.1. Microservices</a></li>
+<li><a href="#_verteilungsdiagramm_deployment_diagram">20.2. Verteilungsdiagramm (Deployment Diagram)</a></li>
+<li><a href="#_docker_compose_2">20.3. Docker Compose</a></li>
 </ul>
 </li>
 </ul>
@@ -1805,7 +1812,7 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 <p>Programmieren einer User Story</p>
 </li>
 <li>
-<p>Erstellen eines Dokcer Container</p>
+<p>Erstellen eines Docker Container</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1981,11 +1988,65 @@ ghcr.io/htl-leonding/hello-world-chris      latest        bf8419a868f2   14 seco
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_03_18"><a class="anchor" href="#_2025_03_18"></a>20. 2025-03-18</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_microservices"><a class="anchor" href="#_microservices"></a>20.1. Microservices</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Package by Feature als Vorstufe zu microservices.</p>
+</li>
+<li>
+<p>Microservices: Eine Applikation wird fachl,ich in mehrere kleinere (unabhängige) Services aufgeteilt. Eine Koordinationsschicht ermöglicht die Kommunikation zwischen den Services.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verteilungsdiagramm_deployment_diagram"><a class="anchor" href="#_verteilungsdiagramm_deployment_diagram"></a>20.2. Verteilungsdiagramm (Deployment Diagram)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Stellt dar, auf welcher Hardware welche Softwarekomponenten laufen.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_compose_2"><a class="anchor" href="#_docker_compose_2"></a>20.3. Docker Compose</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Dient der "Orchestrierung" von mehreren Containern.</p>
+</li>
+<li>
+<p>Beispiel: Ein Webserver benötigt eine Datenbank. Mit Docker Compose können beide Container gestartet werden.</p>
+</li>
+<li>
+<p><a href="https://docs.docker.com/compose" class="bare">https://docs.docker.com/compose</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="dockerfile"></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="dockerfile"></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-03-12 06:43:16 UTC
+Last updated 2025-03-18 12:14:06 UTC
 </div>
 </div>
 </body>
