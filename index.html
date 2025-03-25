@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-03-18</span>
+<span id="revdate">2025-03-25</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -672,6 +672,11 @@ pre.rouge .gs {
 <li><a href="#_microservices">20.1. Microservices</a></li>
 <li><a href="#_verteilungsdiagramm_deployment_diagram">20.2. Verteilungsdiagramm (Deployment Diagram)</a></li>
 <li><a href="#_docker_compose_2">20.3. Docker Compose</a></li>
+</ul>
+</li>
+<li><a href="#_2025_03_24">21. 2025-03-24</a>
+<ul class="sectlevel2">
+<li><a href="#_assertj_db">21.1. assertj-db</a></li>
 </ul>
 </li>
 </ul>
@@ -1864,18 +1869,6 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 <h3 id="_automatisiertes_testen"><a class="anchor" href="#_automatisiertes_testen"></a>19.1. Automatisiertes Testen</h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/tests-in-projekten.png" alt="tests in projekten">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Es wird empfohlen, nicht einfach mit dem Coden zu beginnen, sondern sich zuerst auf inhaltlicher Ebene die Geschäftsfälle (User Stories, Anwendungsfälle) zu überlegen und dann auf organisatorisch-technischer Ebene (Vorgehensmodell-Ebene) die dazugehörigen Tasks zu definieren.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
 <img src="images/tests-ebenen.png" alt="tests ebenen">
 </div>
 </div>
@@ -2042,11 +2035,127 @@ ghcr.io/htl-leonding/hello-world-chris      latest        bf8419a868f2   14 seco
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_03_24"><a class="anchor" href="#_2025_03_24"></a>21. 2025-03-24</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_assertj_db"><a class="anchor" href="#_assertj_db"></a>21.1. assertj-db</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/tests-in-projekten.png" alt="tests in projekten">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dependency in pom.xml eintragen</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.assertj<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>assertj-db<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>jdbc-Verbindung von unserer Testklasse zur Datenbank erstellen</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="nc">DataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="nc">Database</span><span class="o">.</span><span class="na">getDataSource</span><span class="o">();</span>
+<span class="c1">// ...</span>
+<span class="kt">var</span> <span class="n">conn</span> <span class="o">=</span> <span class="nc">AssertDbConnectionFactory</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">dataSource</span><span class="o">).</span><span class="na">create</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>den Inhalt der Datenbanktabelle auf der Console ausgeben</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.assertj.db.type.Table</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">assertj</span><span class="o">.</span><span class="na">db</span><span class="o">.</span><span class="na">output</span><span class="o">.</span><span class="na">Outputs</span><span class="o">.</span><span class="na">output</span><span class="o">;</span>
+<span class="c1">//...</span>
+<span class="nc">Table</span> <span class="n">contactTable</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">table</span><span class="o">(</span><span class="s">"contact"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<span class="n">output</span><span class="o">(</span><span class="n">contactTable</span><span class="o">).</span><span class="na">toConsole</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>einen Vergleich durchführen</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="n">assertThat</span><span class="o">(</span><span class="n">contactTable</span><span class="o">).</span><span class="na">row</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"c_name"</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="s">"John Doe"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"c_email"</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="s">"john.doe@fmail.com"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"c_dob"</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1990</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">23</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">value</span><span class="o">(</span><span class="s">"c_id"</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">t010_createGroups_Ok</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Arrange</span>
+        <span class="n">groupRepository</span><span class="o">.</span><span class="na">deleteAll</span><span class="o">();</span>
+
+        <span class="c1">// Act</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Group</span><span class="o">&gt;</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">createGroups</span><span class="o">(</span><span class="s">"ABCDEF"</span><span class="o">);</span>
+
+        <span class="c1">// Assert</span>
+        <span class="c1">// check table</span>
+        <span class="nc">Table</span> <span class="n">table</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Table</span><span class="o">(</span><span class="n">ds</span><span class="o">,</span> <span class="s">"T_GROUP"</span><span class="o">);</span>
+        <span class="n">output</span><span class="o">(</span><span class="n">table</span><span class="o">).</span><span class="na">toConsole</span><span class="o">();</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">table</span><span class="o">).</span><span class="na">hasNumberOfRows</span><span class="o">(</span><span class="mi">6</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">column</span><span class="o">(</span><span class="s">"G_GROUP"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'A'</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'B'</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'C'</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'D'</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'E'</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">value</span><span class="o">().</span><span class="na">isEqualTo</span><span class="o">(</span><span class="sc">'F'</span><span class="o">);</span>
+
+        <span class="c1">// check Map</span>
+        <span class="n">org</span><span class="o">.</span><span class="na">assertj</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">(</span><span class="n">groups</span><span class="o">).</span><span class="na">hasSize</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
+        <span class="n">org</span><span class="o">.</span><span class="na">assertj</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">(</span><span class="n">groups</span><span class="o">).</span><span class="na">containsOnlyKeys</span><span class="o">(</span><span class="sc">'A'</span><span class="o">,</span> <span class="sc">'B'</span><span class="o">,</span> <span class="sc">'C'</span><span class="o">,</span> <span class="sc">'D'</span><span class="o">,</span> <span class="sc">'E'</span><span class="o">,</span> <span class="sc">'F'</span><span class="o">);</span>
+        <span class="n">org</span><span class="o">.</span><span class="na">assertj</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">(</span><span class="n">groups</span><span class="o">.</span><span class="na">values</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">usingElementComparator</span><span class="o">((</span><span class="n">t1</span><span class="o">,</span> <span class="n">t2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">t1</span><span class="o">.</span><span class="na">groupLetter</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">t2</span><span class="o">.</span><span class="na">groupLetter</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">contains</span><span class="o">(</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'A'</span><span class="o">),</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'B'</span><span class="o">),</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'C'</span><span class="o">),</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'D'</span><span class="o">),</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'E'</span><span class="o">),</span>
+                        <span class="k">new</span> <span class="nf">Group</span><span class="o">(</span><span class="sc">'F'</span><span class="o">)</span>
+                <span class="o">);</span>
+
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-03-18 12:14:06 UTC
+Last updated 2025-03-25 08:08:56 UTC
 </div>
 </div>
 </body>
