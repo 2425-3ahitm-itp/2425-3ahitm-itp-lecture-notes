@@ -576,9 +576,6 @@ docker run hello-chris            # Starten des Container mir dem gebauten Image
 
 === Automatisiertes Testen
 
-image::tests-in-projekten.png[]
-
-* Es wird empfohlen, nicht einfach mit dem Coden zu beginnen, sondern sich zuerst auf inhaltlicher Ebene die Geschäftsfälle (User Stories, Anwendungsfälle) zu überlegen und dann auf organisatorisch-technischer Ebene (Vorgehensmodell-Ebene) die dazugehörigen Tasks zu definieren.
 
 image::tests-ebenen.png[]
 
@@ -689,15 +686,96 @@ Hello Chris!
 
 ----
 
+== 2025-03-24
+
+=== assertj-db
+
+image::tests-in-projekten.png[]
+
+. Dependency in pom.xml eintragen
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.assertj</groupId>
+    <artifactId>assertj-db</artifactId>
+    <version>3.0.0</version>
+    <scope>test</scope>
+</dependency>
+----
+
+. jdbc-Verbindung von unserer Testklasse zur Datenbank erstellen
+
+[source,java]
+----
+private final static DataSource dataSource = Database.getDataSource();
+// ...
+var conn = AssertDbConnectionFactory.of(dataSource).create();
+----
+
+. den Inhalt der Datenbanktabelle auf der Console ausgeben
+
+[source,java]
+----
+import org.assertj.db.type.Table;
+import static org.assertj.db.output.Outputs.output;
+//...
+Table contactTable = conn.table("contact").build();
+output(contactTable).toConsole();
+----
+
+. einen Vergleich durchführen
+
+[source,java]
+----
+assertThat(contactTable).row(0)
+        .value("c_name").isEqualTo("John Doe")
+        .value("c_email").isEqualTo("john.doe@fmail.com")
+        .value("c_dob").isEqualTo(LocalDate.of(1990, 6, 23))
+        .value("c_id").isEqualTo(1);
+
+----
 
 
+[source,java]
+----
+    @Test
+    void t010_createGroups_Ok() {
+        // Arrange
+        groupRepository.deleteAll();
 
+        // Act
+        Map<Character, Group> groups = t.createGroups("ABCDEF");
 
+        // Assert
+        // check table
+        Table table = new Table(ds, "T_GROUP");
+        output(table).toConsole();
+        assertThat(table).hasNumberOfRows(6)
+                .column("G_GROUP")
+                .value().isEqualTo('A')
+                .value().isEqualTo('B')
+                .value().isEqualTo('C')
+                .value().isEqualTo('D')
+                .value().isEqualTo('E')
+                .value().isEqualTo('F');
 
+        // check Map
+        org.assertj.core.api.Assertions.assertThat(groups).hasSize(6);
+        org.assertj.core.api.Assertions.assertThat(groups).containsOnlyKeys('A', 'B', 'C', 'D', 'E', 'F');
+        org.assertj.core.api.Assertions.assertThat(groups.values())
+                .usingElementComparator((t1, t2) -> t1.groupLetter.compareTo(t2.groupLetter))
+                .contains(
+                        new Group('A'),
+                        new Group('B'),
+                        new Group('C'),
+                        new Group('D'),
+                        new Group('E'),
+                        new Group('F')
+                );
 
-
-
-
+    }
+----
 
 
 
