@@ -18,6 +18,7 @@ public class ServerSingleThreaded {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 handleConnect(clientSocket);
+                clientSocket.close();
             }
         }
 
@@ -25,7 +26,6 @@ public class ServerSingleThreaded {
     }
 
     private static void handleConnect(Socket clientSocket) throws IOException {
-        try (clientSocket) {
             var outputStream = clientSocket.getOutputStream();
             var inputStream = clientSocket.getInputStream();
             var scanner = new Scanner(inputStream);
@@ -33,20 +33,17 @@ public class ServerSingleThreaded {
             while (scanner.hasNextLine() ) {
                 String line = scanner.nextLine();
                 System.out.println(line);
-                if (line.isBlank()) {
-                    counter++;
-//                    if (counter > 50) {
-//                        break;
-//                    }
-                    System.out.println(counter);
+                if (line.isEmpty()) {
+                    break;
                 }
             }
             var printWriter = new PrintWriter(outputStream, true, StandardCharsets.UTF_8);
 
             printWriter.println("HTTP/1.1 200 OK");
             printWriter.println("Content-Type: text/html");
+            printWriter.println("Connection: close");
             printWriter.println("\r\n");
             printWriter.println("<html><body><h1>Welcome</h1></body></html>\n");
-        }
+
     }
 }
