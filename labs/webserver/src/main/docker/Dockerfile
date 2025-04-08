@@ -10,9 +10,9 @@ CMD ["java", "$MAIN_CLASS"]
 # Build the image
 FROM eclipse-temurin:21
 RUN mkdir -p /opt/app
-COPY --from=builder /usr/local/src/*.class /opt/app/
-WORKDIR /opt/app/
-CMD ["java","ServerSingleThreaded"]
+COPY --from=builder /usr/local/src/*.class /opt/app/at/htl/
+WORKDIR /opt/app
+CMD ["java","at.htl.ServerSingleThreaded"]
 
 
 

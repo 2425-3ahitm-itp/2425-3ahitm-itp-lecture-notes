@@ -777,21 +777,115 @@ assertThat(contactTable).row(0)
     }
 ----
 
+== 2025-04-01
+
+== 2025-04-08
+
+=== wie kann man in Projekten REST-api's verwenden?
+
+* api's können abgefragt werden mittels:
+** Browser (eher nur GET)
+** standalone-Applikationen wie Postman und Insomnia
+** (Java-)Programme mittels http-client
+** curl und httpie (cli)
+*** curl "http://opengtindb.org?ean=4337256824132&cmd=query&queryid=400000000"
+*** http "http://opengtindb.org?ean=4337256824132&cmd=query&queryid=400000000"
+** REST-assured (Test-Framework)
+** REST-client (IDEA-Plugin oder auch für VSCode)
+** Browser-Plugin für REST
+
+
+=== Marshalling / Unmarshalling
+
+Java-Objekt --> JSON-String : Marshalling
+JSON-String --> Java-Objekt : Unmarshalling
+
+* Library: Jackson
+* https://www.baeldung.com/jackson-deserialize-json-unknown-properties
 
 
 
+== Docker Context
 
+* In der pom.xml muss das manifest konfiguriert werden, damit die Main-Klasse gefunden wird.
 
+[source,xml,highlight=17-34]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
+    <groupId>at.htl</groupId>
+    <artifactId>webserver</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
+    <build>
+        <plugins>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>at.htl.ServerSingleThreaded</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
 
+    </build>
 
+</project>
+----
 
+* beim Erstellen eines Docker Images ist darauf zu achten, dass der Build Context korrekt ist.
+* Sämtliche Files werden vom Build Context in die Docker Ausführungsumgebung kopiert.
+* Mit COPY werden dann die Files von dem Build Context in das Docker Image kopiert.
 
+.build - command
+----
+docker build --tag webserver --file src/main/docker/Dockerfile .
+----
 
+.Dockerfile
+----
+FROM maven:3.9.9-eclipse-temurin-21 AS builder
 
+ARG MAIN_CLASS=ServerSingleThreaded
+
+COPY src/main/java/at/htl/$MAIN_CLASS.java /usr/local/src/
+WORKDIR /usr/local/src/
+RUN javac $MAIN_CLASS.java
+CMD ["java", "$MAIN_CLASS"]
+
+# Build the image
+FROM eclipse-temurin:21
+RUN mkdir -p /opt/app
+COPY --from=builder /usr/local/src/*.class /opt/app/at/htl/
+WORKDIR /opt/app
+CMD ["java","at.htl.ServerSingleThreaded"]
+----
+
+.open Interactive Terminal
+----
+docker run --rm -it webserver /bin/bash
+----
+
+.run server
+----
+docker run --rm -p 8080:8080 --name webserver webserver
+----
 
 
 
