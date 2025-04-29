@@ -887,7 +887,61 @@ docker run --rm -it webserver /bin/bash
 docker run --rm -p 8080:8080 --name webserver webserver
 ----
 
+== 2025-04-29
 
+* Zuerst wird für jedes Softwareprodukt eine eigene docker-compose.yaml Datei erstellt.
+
+* Anschließend werden diese Docker-Compose-Dateien in eine gemeinsame Datei zusammengeführt und dort koordiniert ausgeführt.
+
+.postgres.yaml
+[source,yaml]
+----
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: db
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
+----
+
+IMPORTANT: Vor der Arbeit mit `docker compose` ins Verzeichnis wechseln, in dem das docker-compose.yaml File liegt.
+
+.starten von docker-compose
+----
+;docker compose -f ../compose/postgres.yaml up
+----
+
+.Welche Container laufen in docker-compose?
+----
+docker compose ls
+----
+
+.Einloggen in einen laufenden Container
+----
+ docker compose --file=postgres.yaml exec -it postgres bash
+----
+
+.Testweise Datenbank dumpen (ein Backup erstellen)
+----
+PGPASSWORD=app pg_dump --username=app db
+----
+
+* `PGPASSWORD=app` ist eine Umgebungsvarianble, die für den nachfolgenden Aufruf von `pg_dump` zur Verfügung steht.
+
+.Backup einer PostgreSQL-Datenbank (dump)
+----
+docker compose --file=postgres.yaml exec -it postgres pg_dump --username=app db | gzip > sql.gz
+----
 
 
 
