@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-04-08</span>
+<span id="revdate">2025-04-29</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -687,6 +687,7 @@ pre.rouge .gs {
 </ul>
 </li>
 <li><a href="#_docker_context">24. Docker Context</a></li>
+<li><a href="#_2025_04_29">25. 2025-04-29</a></li>
 </ul>
 </div>
 </div>
@@ -2335,11 +2336,95 @@ CMD ["java","at.htl.ServerSingleThreaded"]</pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_04_29"><a class="anchor" href="#_2025_04_29"></a>25. 2025-04-29</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Zuerst wird für jedes Softwareprodukt eine eigene docker-compose.yaml Datei erstellt.</p>
+</li>
+<li>
+<p>Anschließend werden diese Docker-Compose-Dateien in eine gemeinsame Datei zusammengeführt und dort koordiniert ausgeführt.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">postgres.yaml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="na">postgres</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">postgres</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">POSTGRES_USER</span><span class="pi">:</span> <span class="s">app</span>
+      <span class="na">POSTGRES_PASSWORD</span><span class="pi">:</span> <span class="s">app</span>
+      <span class="na">POSTGRES_DB</span><span class="pi">:</span> <span class="s">db</span>
+    <span class="na">healthcheck</span><span class="pi">:</span>
+      <span class="na">test</span><span class="pi">:</span> <span class="pi">[</span> <span class="s2">"</span><span class="s">CMD-SHELL"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">pg_isready"</span> <span class="pi">]</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">pgdata:/var/lib/postgresql/data</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">pgdata</span><span class="pi">:</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Vor der Arbeit mit <code>docker compose</code> ins Verzeichnis wechseln, in dem das docker-compose.yaml File liegt.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">starten von docker-compose</div>
+<div class="content">
+<pre>;docker compose -f ../compose/postgres.yaml up</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Welche Container laufen in docker-compose?</div>
+<div class="content">
+<pre>docker compose ls</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Einloggen in einen laufenden Container</div>
+<div class="content">
+<pre> docker compose --file=postgres.yaml exec -it postgres bash</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Testweise Datenbank dumpen (ein Backup erstellen)</div>
+<div class="content">
+<pre>PGPASSWORD=app pg_dump --username=app db</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PGPASSWORD=app</code> ist eine Umgebungsvarianble, die für den nachfolgenden Aufruf von <code>pg_dump</code> zur Verfügung steht.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Backup einer PostgreSQL-Datenbank (dump)</div>
+<div class="content">
+<pre>docker compose --file=postgres.yaml exec -it postgres pg_dump --username=app db | gzip &gt; sql.gz</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-04-08 07:51:37 UTC
+Last updated 2025-04-29 08:24:58 UTC
 </div>
 </div>
 </body>
