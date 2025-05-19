@@ -943,10 +943,21 @@ PGPASSWORD=app pg_dump --username=app db
 docker compose --file=postgres.yaml exec -it postgres pg_dump --username=app db | gzip > sql.gz
 ----
 
+* Ergebnis ist ein gzip-komprimiertes File mit dem Namen sql.gz
 
 
+== 2025-05-19
+
+=== Reverse-Proxy
+
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xo5V9g9joFs?si=ObXdoWzK2O_6uvrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
 
 
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xWWXD_NKpHs?si=ziR2L8K-kQ4gFmJ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
 
 
 
