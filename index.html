@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-05-19</span>
+<span id="revdate">2025-05-21</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -691,6 +691,7 @@ pre.rouge .gs {
 <li><a href="#_2025_05_19">26. 2025-05-19</a>
 <ul class="sectlevel2">
 <li><a href="#_reverse_proxy">26.1. Reverse-Proxy</a></li>
+<li><a href="#_2025_05_20">26.2. 2025-05-20</a></li>
 </ul>
 </li>
 </ul>
@@ -2440,13 +2441,146 @@ Vor der Arbeit mit <code>docker compose</code> ins Verzeichnis wechseln, in dem 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xo5V9g9joFs?si=ObXdoWzK2O_6uvrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xWWXD_NKpHs?si=ziR2L8K-kQ4gFmJ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+<div class="sect2">
+<h3 id="_2025_05_20"><a class="anchor" href="#_2025_05_20"></a>26.2. 2025-05-20</h3>
+<div class="listingblock">
+<div class="content">
+<pre>netstat -ant | grep 5432</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>tcp46      0      0  *.5432                 *.*                    LISTEN
+fd2f59fb6fe26d56 stream      0      0 8611bcf93543214b                0                0                0 /var/run/pppconfd</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Der * bedeutet, dass der Port auf alle Netzwerk-Interfaces horcht.</p>
+</li>
+<li>
+<p>bei Linux würde -antp auch die dazugehörigen Prozesse anzeigen.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>netstat -antp</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Result</div>
+<div class="content">
+<pre>(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:30631         0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -
+tcp6       0      0 127.0.0.1:45323         :::*                    LISTEN      17575/./jetbrains-t
+tcp6       0      0 127.0.0.1:52829         :::*                    LISTEN      17575/./jetbrains-t
+tcp6       0      0 :::22                   :::*                    LISTEN      -
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> netstat -ant | grep LISTEN</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>tcp46      0      0  *.5432                 *.*                    LISTEN
+tcp46      0      0  *.6000                 *.*                    LISTEN
+tcp6       0      0  *.53                   *.*                    LISTEN
+tcp4       0      0  *.53                   *.*                    LISTEN
+tcp4       0      0  127.0.0.1.61559        *.*                    LISTEN
+tcp4       0      0  127.0.0.1.7239         *.*                    LISTEN
+tcp4       0      0  127.0.0.1.61549        *.*                    LISTEN
+tcp4       0      0  127.0.0.1.26621        *.*                    LISTEN
+...
+tcp4       0      0  127.0.0.1.49211        *.*                    LISTEN
+tcp4       0      0  127.0.0.1.9151         *.*                    LISTEN
+tcp4       0      0  *.57621                *.*                    LISTEN
+tcp4       0      0  127.0.0.1.1025         *.*                    LISTEN
+tcp4       0      0  *.88                   *.*                    LISTEN
+tcp6       0      0  *.88                   *.*                    LISTEN
+tcp4       0      0  127.0.0.1.8021         *.*                    LISTEN
+tcp6       0      0  ::1.8021               *.*                    LISTEN
+tcp4       0      0  *.445                  *.*                    LISTEN
+tcp6       0      0  *.445                  *.*                    LISTEN</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Hier sieht man, dass manche Ports nur von intern (localhost) angesprochen werden können.</p>
+</li>
+<li>
+<p>bei MacOS würde man folgenden Befehl verwenden:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> lsof -i -P -n | grep LISTEN</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Result</div>
+<div class="content">
+<pre>rapportd    606 stuetz    8u  IPv4 0xb6e2667869e70684      0t0    TCP *:50607 (LISTEN)
+rapportd    606 stuetz   12u  IPv6 0x889aaa34d19a9844      0t0    TCP *:50607 (LISTEN)
+ControlCe   777 stuetz    8u  IPv4 0x61d2a85b9b674e58      0t0    TCP *:7000 (LISTEN)
+ControlCe   777 stuetz    9u  IPv6 0x452349c57bc733f0      0t0    TCP *:7000 (LISTEN)
+ControlCe   777 stuetz   10u  IPv4 0x3b84959d8ee716c8      0t0    TCP *:5000 (LISTEN)
+ControlCe   777 stuetz   11u  IPv6 0x26c0035d85e7504a      0t0    TCP *:5000 (LISTEN)
+Spotify     929 stuetz   78u  IPv4 0xe4fbdca9704406b8      0t0    TCP *:57621 (LISTEN)
+Spotify     929 stuetz   82u  IPv4 0x48d0e223be6fb0c6      0t0    TCP *:50597 (LISTEN)
+FinderSyn   957 stuetz    3u  IPv4 0x9c9117e56e3bd34f      0t0    TCP 127.0.0.1:1025 (LISTEN)
+jetbrains  1128 stuetz  103u  IPv6 0xbb8988425aee7c3f      0t0    TCP 127.0.0.1:49274 (LISTEN)
+jetbrains  1128 stuetz  267u  IPv6 0xaf1596bddf6de4f0      0t0    TCP 127.0.0.1:52829 (LISTEN)
+Dropbox    1132 stuetz  154u  IPv4 0x81dd39f69271770e      0t0    TCP 127.0.0.1:17600 (LISTEN)
+Dropbox    1132 stuetz  155u  IPv4 0x4e68170e700218e2      0t0    TCP 127.0.0.1:17603 (LISTEN)
+tor        1138 stuetz    6u  IPv4 0xd162863dccd6f047      0t0    TCP 127.0.0.1:9151 (LISTEN)
+tor        1138 stuetz   11u  IPv4 0x7a379cd8dd421acb      0t0    TCP 127.0.0.1:9150 (LISTEN)
+cloud-dri  1170 stuetz    4u  IPv4 0x37958c0585a9a952      0t0    TCP 127.0.0.1:49211 (LISTEN)
+cloud-dri  1170 stuetz   10u  IPv4 0x5137ea581752d249      0t0    TCP 127.0.0.1:50634 (LISTEN)
+idea       6925 stuetz   32u  IPv6 0xfa4db57756db584c      0t0    TCP 127.0.0.1:63343 (LISTEN)
+embedding  7573 stuetz    5u  IPv6 0x8d634d0b00a6be49      0t0    TCP [::1]:52870 (LISTEN)
+embedding  7573 stuetz    6u  IPv6  0x6304b015ccbac77      0t0    TCP 127.0.0.1:52870 (LISTEN)
+TextMate  72369 stuetz   15u  IPv6 0x9d3a1c4167f22dd0      0t0    TCP [::1]:52698 (LISTEN)
+Google    78808 stuetz   44u  IPv6 0x5b7c244ead49ed28      0t0    TCP [::1]:7679 (LISTEN)
+idea      81281 stuetz   15u  IPv6 0x41a6de76702cdc4d      0t0    TCP 127.0.0.1:63342 (LISTEN)
+idea      81281 stuetz  571u  IPv6 0x4b51db0cf7be0613      0t0    TCP 127.0.0.1:61912 (LISTEN)
+embedding 81895 stuetz    5u  IPv6  0x56b4f81ee5b74a4      0t0    TCP [::1]:59523 (LISTEN)
+embedding 81895 stuetz    6u  IPv6 0xcb0112bbb40a43d0      0t0    TCP 127.0.0.1:59523 (LISTEN)
+adb       99562 stuetz    8u  IPv4 0x80ca7d7734ab36f4      0t0    TCP 127.0.0.1:5037 (LISTEN)</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_umbauen_von_multistage_zu_lokalem_bauen"><a class="anchor" href="#_umbauen_von_multistage_zu_lokalem_bauen"></a>26.2.1. Umbauen von Multistage zu lokalem Bauen</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Grund: Dependencies können im Docker build nicht gecached werden.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-05-19 18:35:43 UTC
+Last updated 2025-05-21 08:29:03 UTC
 </div>
 </div>
 </body>
