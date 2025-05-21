@@ -1,2 +1,3 @@
 services:
-  include
+  include:
+  - postgres.yaml
