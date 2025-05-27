@@ -1072,10 +1072,26 @@ adb       99562 stuetz    8u  IPv4 0x80ca7d7734ab36f4      0t0    TCP 127.0.0.1:
 * Grund: Dependencies können im Docker build nicht gecached werden.
 
 
+== 2025-05-27
 
+----
+docker compose -f webserver.yaml up --build
+----
 
+.beobachten der einzelnen Container
+----
+watch docker compose ps
+----
 
+watch ... führt das Kommando wiederholt aus
 
+.result
+----
+Every 2.0s: docker compose ps                                                                                         Toms-MBP-2022.local: 09:30:58
+                                                                                                                                      in 0.089s (0)
+NAME                  IMAGE       COMMAND                  SERVICE     CREATED              STATUS                        PORTS
+compose-postgres-1    postgres    "docker-entrypoint.s…"   postgres    About a minute ago   Up About a minute (healthy)   0.0.0.0:5432->5432/tcp
+compose-webserver-1   webserver   "/__cacert_entrypoin…"   webserver   About a minute ago   Up About a minute             0.0.0.0:8080->8080/tcp
+----
 
-
-
+* link:download/docker-monorepo-2025-05-27.zip[Download des Projekts (mit lokalem Git Repo)]
