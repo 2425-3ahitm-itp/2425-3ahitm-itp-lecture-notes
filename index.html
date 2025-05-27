@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-05-21</span>
+<span id="revdate">2025-05-27</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -694,6 +694,7 @@ pre.rouge .gs {
 <li><a href="#_2025_05_20">26.2. 2025-05-20</a></li>
 </ul>
 </li>
+<li><a href="#_2025_05_27">27. 2025-05-27</a></li>
 </ul>
 </div>
 </div>
@@ -2576,11 +2577,47 @@ adb       99562 stuetz    8u  IPv4 0x80ca7d7734ab36f4      0t0    TCP 127.0.0.1:
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_05_27"><a class="anchor" href="#_2025_05_27"></a>27. 2025-05-27</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>docker compose -f webserver.yaml up --build</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">beobachten der einzelnen Container</div>
+<div class="content">
+<pre>watch docker compose ps</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>watch &#8230;&#8203; führt das Kommando wiederholt aus</p>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>Every 2.0s: docker compose ps                                                                                         Toms-MBP-2022.local: 09:30:58
+                                                                                                                                      in 0.089s (0)
+NAME                  IMAGE       COMMAND                  SERVICE     CREATED              STATUS                        PORTS
+compose-postgres-1    postgres    "docker-entrypoint.s…"   postgres    About a minute ago   Up About a minute (healthy)   0.0.0.0:5432-&gt;5432/tcp
+compose-webserver-1   webserver   "/__cacert_entrypoin…"   webserver   About a minute ago   Up About a minute             0.0.0.0:8080-&gt;8080/tcp</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="download/docker-monorepo-2025-05-27.zip">Download des Projekts (mit lokalem Git Repo)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-05-21 08:29:03 UTC
+Last updated 2025-05-27 08:40:27 UTC
 </div>
 </div>
 </body>
