@@ -1095,3 +1095,76 @@ compose-webserver-1   webserver   "/__cacert_entrypoin…"   webserver   About a
 ----
 
 * link:download/docker-monorepo-2025-05-27.zip[Download des Projekts (mit lokalem Git Repo)]
+
+
+
+== 2025-06-03
+
+* https://achtung-designer.com/gestaltgesetze-die-designs-besser-machen/[Gestaltgesetze: 7 geniale Regeln, die deine Designs besser machen]
+
+
+=== Übung
+
+* Erstellen eines Java-Webservers, der auf eine Datenbank zugreift.
+
+* Aus der Datenbank werden die Daten einer Tabelle ausgelesen und als html-table dargestellt.
+
+* Es ist ein Tabelle GREETING zu erstellen mit den Spalten:
+** ID (integer, primary key)
+** GREETING_TEXT (varchar(255)) zB "Hallo Welt", "Hallo Chris", "Hallo Hanan"
+
+* Aufruf mit http://localhost:8080/greeting/1 --> "Hallo Welt"
+* Aufruf mit http://localhost:8080/greeting/2 --> "Hallo Chris"
+* Aufruf mit http://localhost:8080/greeting/3 --> "Hallo Hanan"
+
+
+* Die Datenbank ist eine Postgres-Datenbank, die in einem Docker-Container läuft.
+
+=== gh-actions
+
+* https://docs.github.com/en/actions/writing-workflows/quickstart
+
+----
+dig . ns
+dig htl-leonding.at ns
+dig htl-leonding.atdir at ns ns
+dig at ns
+dig ac.at ns
+dig htl-leonding.at ns
+dig www.htl-leonding.at ns
+dig www.htl-leonding.ac.at ns
+cd compose
+docker compose ps
+docker compose up
+watch docker compose ps
+cd compose
+watch docker compose ps
+cd compose
+docker compose exec -it webserver bash
+git status
+git add .
+git commit -m "docker compose fertig"
+git remote add origin git@github.com:htl-leonding/docker-monorepo-3ahitm.git
+git branch -M main\ngit push -u origin main
+mkdir -p .github/workflows
+git status
+git add .
+git status
+git commit -m "Erste pipeline erstellt"
+git push origin main
+git commit -m "Java in gh-runner"
+git add .
+git commit -m "Java in gh-runner"
+git push origin main
+git add .
+git push origin main
+git add .
+git commit -m "Java in gh-runner"
+git push origin main
+cd webserver
+mvn --batch-mode package --file pom.xml
+history
+cat ~/.zsh_history
+----
+
+
