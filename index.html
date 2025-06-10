@@ -565,7 +565,7 @@ pre.rouge .gs {
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-05-27</span>
+<span id="revdate">2025-06-10</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -695,6 +695,12 @@ pre.rouge .gs {
 </ul>
 </li>
 <li><a href="#_2025_05_27">27. 2025-05-27</a></li>
+<li><a href="#_2025_06_03">28. 2025-06-03</a>
+<ul class="sectlevel2">
+<li><a href="#_übung">28.1. Übung</a></li>
+<li><a href="#_gh_actions">28.2. gh-actions</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -2613,11 +2619,115 @@ compose-webserver-1   webserver   "/__cacert_entrypoin…"   webserver   About a
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_2025_06_03"><a class="anchor" href="#_2025_06_03"></a>28. 2025-06-03</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://achtung-designer.com/gestaltgesetze-die-designs-besser-machen/">Gestaltgesetze: 7 geniale Regeln, die deine Designs besser machen</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_übung"><a class="anchor" href="#_übung"></a>28.1. Übung</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Erstellen eines Java-Webservers, der auf eine Datenbank zugreift.</p>
+</li>
+<li>
+<p>Aus der Datenbank werden die Daten einer Tabelle ausgelesen und als html-table dargestellt.</p>
+</li>
+<li>
+<p>Es ist ein Tabelle GREETING zu erstellen mit den Spalten:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ID (integer, primary key)</p>
+</li>
+<li>
+<p>GREETING_TEXT (varchar(255)) zB "Hallo Welt", "Hallo Chris", "Hallo Hanan"</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Aufruf mit <a href="http://localhost:8080/greeting/1" class="bare">http://localhost:8080/greeting/1</a> -&#8594; "Hallo Welt"</p>
+</li>
+<li>
+<p>Aufruf mit <a href="http://localhost:8080/greeting/2" class="bare">http://localhost:8080/greeting/2</a> -&#8594; "Hallo Chris"</p>
+</li>
+<li>
+<p>Aufruf mit <a href="http://localhost:8080/greeting/3" class="bare">http://localhost:8080/greeting/3</a> -&#8594; "Hallo Hanan"</p>
+</li>
+<li>
+<p>Die Datenbank ist eine Postgres-Datenbank, die in einem Docker-Container läuft.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gh_actions"><a class="anchor" href="#_gh_actions"></a>28.2. gh-actions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.github.com/en/actions/writing-workflows/quickstart" class="bare">https://docs.github.com/en/actions/writing-workflows/quickstart</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>dig . ns
+dig htl-leonding.at ns
+dig htl-leonding.atdir at ns ns
+dig at ns
+dig ac.at ns
+dig htl-leonding.at ns
+dig www.htl-leonding.at ns
+dig www.htl-leonding.ac.at ns
+cd compose
+docker compose ps
+docker compose up
+watch docker compose ps
+cd compose
+watch docker compose ps
+cd compose
+docker compose exec -it webserver bash
+git status
+git add .
+git commit -m "docker compose fertig"
+git remote add origin git@github.com:htl-leonding/docker-monorepo-3ahitm.git
+git branch -M main\ngit push -u origin main
+mkdir -p .github/workflows
+git status
+git add .
+git status
+git commit -m "Erste pipeline erstellt"
+git push origin main
+git commit -m "Java in gh-runner"
+git add .
+git commit -m "Java in gh-runner"
+git push origin main
+git add .
+git push origin main
+git add .
+git commit -m "Java in gh-runner"
+git push origin main
+cd webserver
+mvn --batch-mode package --file pom.xml
+history
+cat ~/.zsh_history</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-05-27 08:40:27 UTC
+Last updated 2025-06-10 07:07:40 UTC
 </div>
 </div>
 </body>
