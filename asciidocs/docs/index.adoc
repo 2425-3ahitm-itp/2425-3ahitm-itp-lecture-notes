@@ -1120,6 +1120,8 @@ compose-webserver-1   webserver   "/__cacert_entrypoin…"   webserver   About a
 
 * Die Datenbank ist eine Postgres-Datenbank, die in einem Docker-Container läuft.
 
+* Bauen Sie anschließend eine gh-actions-pipeline, die ein Docker-Image des Webservers baut und dieses in der GitHub Container Registry speichert.
+
 === gh-actions
 
 * https://docs.github.com/en/actions/writing-workflows/quickstart
@@ -1166,5 +1168,27 @@ mvn --batch-mode package --file pom.xml
 history
 cat ~/.zsh_history
 ----
+
+
+== 2025-06-10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
